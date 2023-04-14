@@ -15,11 +15,15 @@ public class Linear_System {
         Double a22 = obj1.nextDouble();
         System.out.println("Enter second right number: ");
         Double b2 = obj1.nextDouble();
-        Double Det = Math.abs(a11 * a22 - a12 * a21);
-        Double Dx = Math.abs(b1 * a22 - b2 * a12);
-        Double Dy = Math.abs(b1 * a21 - b2 * a11);
-        if (Det == 0){
-            System.out.println("There are infinite solutions or No solution");
+        Double Det = a11 * a22 - a12 * a21;
+        Double Dx =  b1 * a22 - b2 * a12;
+        Double Dy =  b2 * a11 - b1 * a21;
+        ///System.out.println(Det + " "  + Dx + " " + Dy);
+        if (Det == 0) {
+            if (a11 == 0 && a12 == 0 && b1 != 0) System.out.println("No solution !");
+            else if (a21 == 0 && a22 == 0 && b2 != 0) System.out.println("No solution !");
+            else if(Dx == 0 && Dy == 0) System.out.println("Infinite solution");
+            else System.out.println("No solution !");
         }
         else {
             Double x = Dx / Det;
