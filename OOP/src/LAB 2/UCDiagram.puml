@@ -1,0 +1,99 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+:The Store Manage: as SM
+:System: as S
+
+package AIMS{
+    usecase "Browse the list of DVDs" as Brws
+    usecase "Play a demo" as Play
+    usecase "Search for DVD" as Search
+    usecase "Search By Title" as SBT
+    usecase "Search By Category" as SBC
+    usecase "Search By Cost" as SBCst
+    usecase "View the detail information of a DVD" as VDVD
+    usecase "Add a DVD to a cart" as Add
+    usecase "See the current cart" as SCrt
+    usecase "listen to a DVD" as Lst
+    usecase "Sort the cart" as So
+    usecase "Sort By Cost" as SoBCst
+    usecase "Sort By Title" as SoBT
+    usecase "Manage the cart" as Manage
+    usecase "update the quantity of a DVD in a cart" as Update
+    usecase "remove a DVD in the cart" as Remove
+    usecase "Free DVD(randomly)" as FD
+    usecase "Filter DVDs in the cart by ID or Title" as Filter
+    usecase "Pay the Order" as Pay
+    /'usecase "Information of the found item in the cart." as IF
+    usecase "Item is not Found" as INF'/
+    usecase "Place Order" as PO
+    usecase "See can see the list of pending orders" as See
+    usecase "Pick any order to see" as Pick
+    usecase "Approve Order"  as Approve
+    usecase "Reject Order" as Reject
+    usecase "Manage DVD" as mng
+    usecase "Add new DVDs to the store" as ADVD
+    usecase "Provide all information of the new DVD" as Provide
+    usecase "Displays all the information of the DVDs" as Display_D
+    usecase "Remove DVD from Store" as Rmv
+    usecase "Order Processing" as OP
+    usecase "Calculate the delivery fee" as CALC
+    usecase "Display Invoice" as DI
+    usecase "Payment by Credit Card" as PAY
+    usecase "Send Email" as SE
+    usecase "Checking the validation of the card" as Check
+    usecase "Performing the pay transaction" as Perform
+    usecase "Payment Processing" as PP
+    usecase "Display all the detailed information" as Display
+}
+:Customer: --> Brws
+:Search: ..> SBT: <extend>
+:Search: ..> SBC: <extend>
+:Search: ..> SBCst: <extend>
+:Customer: --> Search
+:Search: ..> Brws: <include>
+:Customer: --> VDVD
+:VDVD: ..-> Play: <include>
+:VDVD: ..> Brws: <include>
+:Customer: --> Add
+:Add: ..> Search: <include>
+:Customer: --> SCrt
+:Customer: --> Lst
+:Lst: ..> SCrt: <include>
+:Customer: --> So
+:So: ..> SoBCst: <extend>
+:So: ..> SoBT: <extend>
+:Customer: --> Manage
+:Manage: ..> Update: <extend>
+:Manage: ..> Remove: <extend>
+:So: ..> SCrt: <include>
+:Manage: ..> SCrt: <include>
+:Customer: --> FD
+:FD: ..> SCrt: <include>
+:Customer: --> Filter
+:Filter: ..> SCrt: <include>
+:Customer: --> PO
+:PO: ..> SCrt: <include>
+:SM: --> See
+:See: ..> Pick: <extend>
+:Pick: ..-> Approve: <extend>
+:Pick: ..> Reject: <extend>
+:SM: --> mng
+:mng: ..> Provide: <extend>
+:mng: ..> ADVD: <extend>
+:mng: ..> Rmv: <extend>
+:S: --> Play
+:S: --> Display_D
+:Display_D: ..> SoBT: <extend>
+:Display_D: ..> SoBCst: <extend>
+:S: --> OP
+:OP: ..> CALC: <extend>
+:OP: ..> DI: <extend>
+:Customer: --> Pay
+:Pay: ..> OP: <include>
+:S: --> PP
+:PP: --> Check: <extend>
+:PP: --> Perform: <extend>
+:S: --> Display
+:S: --> SE
+@enduml
