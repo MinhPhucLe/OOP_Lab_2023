@@ -1,34 +1,39 @@
 package hust.soict.globalict.aims.store;
 import hust.soict.globalict.aims.media.DigitalVideoDisc;
+import hust.soict.globalict.aims.media.Media;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Store {
-    private DigitalVideoDisc itemsInStore[] = new DigitalVideoDisc[1000100];
+    private final List<Media> itemsInStore = new ArrayList<>();
     public static int numOfItems = 0;
 
-    public void addItems(DigitalVideoDisc dvd) {
-        itemsInStore[numOfItems] = dvd;
-        numOfItems++;
-    }
-
-    public void removeItems(DigitalVideoDisc dvd) {
-        int pos = 0;
-        for (int i = 0; i < numOfItems; ++ i){
-            if (itemsInStore[i] == dvd){
-                numOfItems--;
-                pos = i;
-                break;
+    public void addMedia (Media media){
+        for (int i = 0; i < itemsInStore.size(); ++ i) {
+            if (itemsInStore.get(i).equals(media)) {
+                System.out.println("Media already existed !");
+                return;
             }
         }
-        for (int i = pos; i < numOfItems; ++ i){
-            itemsInStore[i] = itemsInStore[i + 1];
+        itemsInStore.add(media);
+        System.out.println("Add Successfully");
+        return;
+    }
+
+    public void removeMedia(Media media){
+        for(Media item : itemsInStore){
+            if(item.equals(media)){
+                itemsInStore.remove(media);
+                System.out.println("Remove Successfully");
+                return;
+            }
         }
-        System.out.println("The DICS is deleted");
+        System.out.println("Can't find that media !");
     }
 
     public void print() {
-        if (numOfItems < 0){
-            System.out.println("There isn't any items in the store");
-        }
-        for (int i = 0; i < numOfItems; ++ i)
-            System.out.println(itemsInStore[i].getTitle());
+        for (int i = 0; i < itemsInStore.size(); ++ i)
+            System.out.println(itemsInStore.get(i).toString());
     }
 }
