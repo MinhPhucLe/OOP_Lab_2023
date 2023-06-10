@@ -1,11 +1,16 @@
 package hust.soict.globalict.aims.media;
 
+import hust.soict.globalict.aims.media.Comparator.*;
+
+import java.util.Comparator;
+
 public abstract class Media {
     private int id;
     private String title;
     private String category;
     private float cost;
-
+    public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaComparatorByCostTitle();
+    public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitleCost();
     public Media() {}
 
     public int getId() {
