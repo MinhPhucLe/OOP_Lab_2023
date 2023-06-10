@@ -1,6 +1,6 @@
 package hust.soict.globalict.aims.media;
 
-public class DigitalVideoDisc extends Disc {
+public class DigitalVideoDisc extends Disc implements Playable {
     private String title;
     private String category;
     private String directory;
@@ -66,5 +66,9 @@ public class DigitalVideoDisc extends Disc {
     public boolean isMatch(String title) {
         if (title == title) return true;
         return  false;
+    }
+    public void play() {
+        System.out.println("Playing DVD: " + this.getTitle());
+        System.out.println("DVD length: " + this.getLength());
     }
 }
