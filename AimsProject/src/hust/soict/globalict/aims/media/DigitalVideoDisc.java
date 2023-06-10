@@ -1,6 +1,6 @@
 package hust.soict.globalict.aims.media;
 
-public class DigitalVideoDisc extends Media {
+public class DigitalVideoDisc extends Disc {
     private String title;
     private String category;
     private String directory;
@@ -28,32 +28,41 @@ public class DigitalVideoDisc extends Media {
     }
 
     public DigitalVideoDisc(String title){
-        super(title);
+        setTitle(title);
         nbDigitalVideoDiscs++;
         id = nbDigitalVideoDiscs;
     }
 
     public DigitalVideoDisc( String title, String category, float cost){
-        super(title, category, cost);
+        setTitle(title);
+        setCategory(category);
+        setCost(cost);
         nbDigitalVideoDiscs++;
         id = nbDigitalVideoDiscs;
     }
 
     public DigitalVideoDisc(String title, String category, String directory, float cost){
-        super(title, category, cost);
+        setTitle(title);
+        setCategory(category);
+        setCost(cost);
         this.directory = directory;
         nbDigitalVideoDiscs++;
         id = nbDigitalVideoDiscs;
     }
 
     public DigitalVideoDisc(String title, String category, String directory, int length, float cost){
-        super(title, category, cost);
+        setTitle(title);
+        setCategory(category);
+        setCost(cost);
         this.directory = directory;
         this.length = length;
         nbDigitalVideoDiscs++;
         id = nbDigitalVideoDiscs;
     }
 
+    public DigitalVideoDisc(int id, String title, String category, String directory, int length, float cost) {
+        super(id, title, category, directory, length, cost);
+    }
     public boolean isMatch(String title) {
         if (title == title) return true;
         return  false;
