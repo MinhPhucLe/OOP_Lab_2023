@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/OOP/src/OOP.iml" filepath="$PROJECT_DIR$/OOP/src/OOP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/OOP_Lab_2023.iml" filepath="$PROJECT_DIR$/.idea/OOP_Lab_2023.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OOP/src/LAB 3/hust/hust.iml" filepath="$PROJECT_DIR$/OOP/src/LAB 3/hust/hust.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OOP/src/LAB 3/out/out.iml" filepath="$PROJECT_DIR$/OOP/src/LAB 3/out/out.iml" />
+    </modules>
+  </component>
+</project>
