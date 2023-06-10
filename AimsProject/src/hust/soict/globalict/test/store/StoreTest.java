@@ -7,10 +7,10 @@ public class StoreTest {
         Store store = new Store();
         DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
         // Test add method
-        store.addItems(dvd1);
+        store.addMedia(dvd1);
         store.print();
         // Test remove method
-        store.removeItems(dvd1);
+        store.removeMedia(dvd1);
         store.print();
     }
 }
