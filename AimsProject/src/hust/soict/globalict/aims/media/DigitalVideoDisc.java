@@ -13,11 +13,11 @@ public class DigitalVideoDisc extends Disc implements Playable {
 
 
     public void setDirectory(String directory) {
-        directory = directory;
+        this.directory = directory;
     }
 
     public void setLength(int length) {
-        length = length;
+        this.length = length;
     }
 
     public String getDirectory(){
@@ -70,5 +70,23 @@ public class DigitalVideoDisc extends Disc implements Playable {
     public void play() {
         System.out.println("Playing DVD: " + this.getTitle());
         System.out.println("DVD length: " + this.getLength());
+    }
+
+    public String toString(){
+        StringBuffer printDisc = new StringBuffer();
+        printDisc.append(getId());
+        printDisc.append(" - ");
+        printDisc.append("DVD");
+        printDisc.append(" - ");
+        printDisc.append(getTitle());
+        printDisc.append(" - ");
+        printDisc.append(getCategory());
+        printDisc.append(" - ");
+        printDisc.append(getDirectory());
+        printDisc.append(" - ");
+        printDisc.append(getLength());
+        printDisc.append(": ");
+        printDisc.append(getCost());
+        return  printDisc.toString();
     }
 }

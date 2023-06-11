@@ -2,9 +2,10 @@ package hust.soict.globalict.aims.cart;
 
 import hust.soict.globalict.aims.media.Media;
 import hust.soict.globalict.aims.media.DigitalVideoDisc;
-
+import hust.soict.globalict.aims.media.Comparator.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.*;
 
 public class Cart {
     public static final int MAX_ORDERS = 20;
@@ -46,6 +47,22 @@ public class Cart {
         System.out.println("Can't find that media !");
     }
 
+    public void removeMedia(String title){
+        for(int i = 0; i < itemsOrdered.size(); ++ i){
+            Media item = itemsOrdered.get(i);
+            if(item.getTitle().equals(title)){
+                itemsOrdered.remove(item);
+                System.out.println("Remove Successfully");
+                return;
+            }
+        }
+        System.out.println("Can't find that media !");
+    }
+
+    public void ClearCart() {
+        itemsOrdered.clear();
+    }
+
     public void Print() {
         System.out.println("**********************CART**********************");
         System.out.println("Ordered Items");
@@ -57,13 +74,32 @@ public class Cart {
         System.out.println("************************************************");
     }
 
-    public void search(String name){
+    public void sortByTitle(){
+        Collections.sort(itemsOrdered , Media.COMPARE_BY_TITLE_COST);
+    }
+    public void sortByCost(){
+        Collections.sort(itemsOrdered , Media.COMPARE_BY_COST_TITLE);
+    }
+
+    public Media search(String name){
         for (int i = 0; i < itemsOrdered.size(); ++ i){
             if (itemsOrdered.get(i).getTitle().equals(name)){
                 System.out.println("This item exists");
-                return;
+                return itemsOrdered.get(i);
             }
         }
-        System.out.println("Invalid items");
+        ///System.out.println("Invalid items");
+        return null;
+    }
+
+    public Media search(int id) {
+        for (int i = 0; i < itemsOrdered.size(); ++ i){
+            if (itemsOrdered.get(i).getId() == id){
+                System.out.println("This item exists");
+                return itemsOrdered.get(i);
+            }
+        }
+        ///System.out.println("Invalid items");
+        return null;
     }
 }

@@ -9,6 +9,12 @@ public class Book extends Media {
     public List<String> getAuthors() {
         return authors;
     }
+    public Book(){
+
+    }
+    public Book(int id , String title , String category , float cost ) {
+        super(id , title , category , cost);
+    }
 
     public void setAuthors(List<String> authors) {
         this.authors = authors;
@@ -42,5 +48,19 @@ public class Book extends Media {
             }
         }
         System.out.println("Remove Unsuccessfully");
+    }
+
+    public String toString(){
+        StringBuffer printBook = new StringBuffer();
+        printBook.append(getId());
+        printBook.append(" - ");
+        printBook.append("Book");
+        printBook.append(" - ");
+        printBook.append(getTitle());
+        printBook.append(" - ");
+        printBook.append(getCategory());
+        printBook.append(": ");
+        printBook.append(getCost());
+        return printBook.toString();
     }
 }

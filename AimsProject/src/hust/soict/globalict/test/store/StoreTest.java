@@ -10,7 +10,7 @@ public class StoreTest {
         store.addMedia(dvd1);
         store.print();
         // Test remove method
-        store.removeMedia(dvd1);
+        store.removeMedia(dvd1.getTitle());
         store.print();
     }
 }
