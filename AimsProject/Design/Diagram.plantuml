@@ -1,0 +1,152 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class Aims {
+  + Aims(): 
+  + storeMenu(): void
+  + showMenu(): void
+  + main(String[]): void
+  + mediaDetailsMenu(): void
+  + cartMenu(): void
+}
+class Book {
+  + Book(): 
+  + Book(int, String, String, float): 
+  - authors: List<String>
+  + removeAuthor(String): void
+  + addAuthor(String): void
+  + toString(): String
+   authors: List<String>
+}
+class Cart {
+  + Cart(): 
+  + size(): int
+  + removeMedia(Media): void
+  + removeMedia(String): void
+  + search(int): Media
+  + TotalCost(): float
+  + sortByTitle(): void
+  + ClearCart(): void
+  + Print(): void
+  + addMedia(Media): void
+  + sortByCost(): void
+  + search(String): Media
+}
+class CartTest {
+  + CartTest(): 
+  + main(String[]): void
+}
+class CompactDisc {
+  + CompactDisc(int, String, String, String, int, float, String): 
+  + CompactDisc(): 
+  - artist: String
+  + removeTrack(Track): void
+  + toString(): String
+  + getlength(): int
+  + addTrack(Track): void
+  + play(): void
+   artist: String
+}
+class DigitalVideoDisc {
+  + DigitalVideoDisc(String, String, String, float): 
+  + DigitalVideoDisc(int, String, String, String, int, float): 
+  + DigitalVideoDisc(String): 
+  + DigitalVideoDisc(String, String, float): 
+  + DigitalVideoDisc(String, String, String, int, float): 
+  - directory: String
+  - length: int
+  + play(): void
+  + isMatch(String): boolean
+  + toString(): String
+   length: int
+   directory: String
+}
+class Disc {
+  + Disc(): 
+  + Disc(int, String, String, String, int, float): 
+  - directory: String
+  - length: int
+   length: int
+   directory: String
+}
+class Media {
+  + Media(int, String, String, float): 
+  + Media(): 
+  + Media(String, String, float): 
+  + Media(String): 
+  - id: int
+  - category: String
+  - cost: float
+  - title: String
+  + equals(Object): boolean
+   cost: float
+   title: String
+   category: String
+   id: int
+}
+class MediaComparatorByCostTitle {
+  + MediaComparatorByCostTitle(): 
+  + compare(Media, Media): int
+}
+class MediaComparatorByTitleCost {
+  + MediaComparatorByTitleCost(): 
+  + compare(Media, Media): int
+}
+interface Playable << interface >> {
+  + play(): void
+}
+class Store {
+  + Store(): 
+  + searchMedia(String): Media
+  + removeMedia(String): void
+  + addMedia(Media): void
+  + print(): void
+}
+class StoreTest {
+  + StoreTest(): 
+  + main(String[]): void
+}
+class TestPassingParameter {
+  + TestPassingParameter(): 
+  + swap(DigitalVideoDisc, DigitalVideoDisc): DigitalVideoDisc
+  + main(String[]): void
+  + swap(Object, Object): void
+  + changeTitle(DigitalVideoDisc, String): void
+}
+class Track {
+  + Track(String, int): 
+  + Track(): 
+  - length: int
+  - title: String
+  + play(): void
+  + equals(Object): boolean
+   length: int
+   title: String
+}
+
+Aims                        -[#595959,dashed]->  Book                       : "«create»"
+Aims                        -[#595959,dashed]->  Cart                       : "«create»"
+Aims                        -[#595959,dashed]->  CompactDisc                : "«create»"
+Aims                        -[#595959,dashed]->  DigitalVideoDisc           : "«create»"
+Aims                        -[#595959,dashed]->  Store                      : "«create»"
+Book                        -[#000082,plain]-^  Media                      
+Cart                       "1" *-[#595959,plain]-> "itemsOrdered\n*" Media                      
+CartTest                    -[#595959,dashed]->  Cart                       : "«create»"
+CartTest                    -[#595959,dashed]->  DigitalVideoDisc           : "«create»"
+CompactDisc                 -[#000082,plain]-^  Disc                       
+CompactDisc                 -[#008200,dashed]-^  Playable                   
+CompactDisc                "1" *-[#595959,plain]-> "tracks\n*" Track                      
+DigitalVideoDisc            -[#000082,plain]-^  Disc                       
+DigitalVideoDisc            -[#008200,dashed]-^  Playable                   
+Disc                        -[#000082,plain]-^  Media                      
+Media                       -[#595959,dashed]->  MediaComparatorByCostTitle : "«create»"
+Media                       -[#595959,dashed]->  MediaComparatorByTitleCost : "«create»"
+Store                      "1" *-[#595959,plain]-> "itemsInStore\n*" Media                      
+StoreTest                   -[#595959,dashed]->  DigitalVideoDisc           : "«create»"
+StoreTest                   -[#595959,dashed]->  Store                      : "«create»"
+TestPassingParameter        -[#595959,dashed]->  DigitalVideoDisc           : "«create»"
+Track                       -[#008200,dashed]-^  Playable                   
+@enduml
