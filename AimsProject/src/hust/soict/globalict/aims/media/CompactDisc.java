@@ -52,4 +52,24 @@ public class CompactDisc extends Disc implements Playable {
             tracks.get(i).play();
         }
     }
+
+    public String toString(){
+        StringBuffer printDisc = new StringBuffer();
+        printDisc.append(getId());
+        printDisc.append(" - ");
+        printDisc.append("CD");
+        printDisc.append(" - ");
+        printDisc.append(getTitle());
+        printDisc.append(" - ");
+        printDisc.append(getCategory());
+        printDisc.append(" - ");
+        printDisc.append(getDirectory());
+        printDisc.append(" - ");
+        printDisc.append(getLength());
+        printDisc.append(" - ");
+        printDisc.append(getArtist());
+        printDisc.append(": ");
+        printDisc.append(getCost());
+        return  printDisc.toString();
+    }
 }

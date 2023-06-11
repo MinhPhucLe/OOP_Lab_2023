@@ -17,14 +17,14 @@ public class Store {
             }
         }
         itemsInStore.add(media);
-        System.out.println("Add Successfully");
+        System.out.println("Add Successfully : " + itemsInStore.size());
         return;
     }
 
-    public void removeMedia(Media media){
+    public void removeMedia(String title){
         for(Media item : itemsInStore){
-            if(item.equals(media)){
-                itemsInStore.remove(media);
+            if(item.getTitle().equals(title)){
+                itemsInStore.remove(item);
                 System.out.println("Remove Successfully");
                 return;
             }
@@ -35,5 +35,17 @@ public class Store {
     public void print() {
         for (int i = 0; i < itemsInStore.size(); ++ i)
             System.out.println(itemsInStore.get(i).toString());
+    }
+
+    public Media searchMedia(String title){
+        for (int i = 0; i < itemsInStore.size(); ++ i){
+            Media item  = itemsInStore.get(i);
+            if (item.getTitle().equals(title)){
+                ///System.out.println("This item exists");
+                return item;
+            }
+        }
+        ///System.out.println("Invalid items");
+        return null;
     }
 }
