@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Store {
-    private final List<Media> itemsInStore = new ArrayList<>();
+    private final ArrayList<Media> itemsInStore = new ArrayList<>();
     public static int numOfItems = 0;
 
     public void addMedia (Media media){
@@ -47,5 +47,9 @@ public class Store {
         }
         ///System.out.println("Invalid items");
         return null;
+    }
+
+    public ArrayList<Media> getItemInStore() {
+        return itemsInStore;
     }
 }

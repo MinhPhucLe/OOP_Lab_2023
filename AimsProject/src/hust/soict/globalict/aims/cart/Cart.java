@@ -1,8 +1,12 @@
 package hust.soict.globalict.aims.cart;
 
+import hust.soict.globalict.aims.exception.LimitExceededException;
 import hust.soict.globalict.aims.media.Media;
 import hust.soict.globalict.aims.media.DigitalVideoDisc;
 import hust.soict.globalict.aims.media.Comparator.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.*;
@@ -10,9 +14,9 @@ import java.util.*;
 public class Cart {
     public static final int MAX_ORDERS = 20;
     public int Num_Orders = 0;
-    private final List<Media> itemsOrdered = new ArrayList<>();
+    private final ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
     public Cart() {};
-    public void addMedia (Media media){
+    public void addMedia (Media media) throws LimitExceededException  {
         for (int i = 0; i < itemsOrdered.size(); ++ i) {
             if (itemsOrdered.get(i).equals(media)) {
                 System.out.println("Media already existed !");
@@ -90,6 +94,10 @@ public class Cart {
         }
         ///System.out.println("Invalid items");
         return null;
+    }
+
+    public ObservableList<Media> getItemsOrdered() {
+        return itemsOrdered;
     }
 
     public Media search(int id) {
