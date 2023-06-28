@@ -1,5 +1,7 @@
 package hust.soict.globalict.aims.media;
 
+import hust.soict.globalict.aims.exception.PlayerException;
+
 public class DigitalVideoDisc extends Disc implements Playable {
     private String title;
     private String category;
@@ -67,9 +69,16 @@ public class DigitalVideoDisc extends Disc implements Playable {
         if (title == title) return true;
         return  false;
     }
-    public void play() {
-        System.out.println("Playing DVD: " + this.getTitle());
-        System.out.println("DVD length: " + this.getLength());
+    public StringBuffer play() throws PlayerException {
+        if (this.getLength() > 0) {
+            System.out.println("Playing DVD: " + this.getTitle());
+            System.out.println("DVD length: " + this.getLength());
+            StringBuffer info = new StringBuffer("");
+            info.append("Playing DVD: " + this.getTitle() + "\n" + "DVD length: " + this.getLength());
+            return info;
+        } else {
+            throw new PlayerException("ERROR: DVD length is non-positive!");
+        }
     }
 
     public String toString(){

@@ -70,4 +70,16 @@ public abstract class Media {
         Media item1 = (Media) item;
         return item1.equals(this.getTitle());
     }
+
+    public boolean filterProperty(String filter, String filterType) {
+        if (filter == null || filter.isEmpty()) return true;
+
+        if (filterType.equals("title")) {
+            if (this.getTitle().toLowerCase().indexOf(filter.toLowerCase()) != -1) return true;
+        }
+        else if (filterType.equals("id")) {
+            if (Integer.toString(this.getId()).toLowerCase().indexOf(filter.toLowerCase()) != -1) return true;
+        }
+        return false;
+    }
 }
